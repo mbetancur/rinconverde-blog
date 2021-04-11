@@ -1,5 +1,7 @@
 # rinconverde-blog
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/adab9ca0-917b-4d1a-a406-d41adcdb406a/deploy-status)](https://app.netlify.com/sites/rinconverde/deploys)
+
 ## Build Setup
 
 ```bash
