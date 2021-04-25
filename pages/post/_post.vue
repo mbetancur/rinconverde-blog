@@ -9,7 +9,7 @@
 <script>
 export default {
   async asyncData({ $content, params }) {
-    const post = await $content("posts", params.post).fetch();
+    const post = await $content("post", params.post).fetch();
     return { post };
   },
 };
