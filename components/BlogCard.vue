@@ -1,7 +1,8 @@
 <template>
   <li class="blog-card">
-    <NuxtLink :to="post.path">
+    <NuxtLink :to="post.path" class="blog-card__link">
       <img
+        class="blog-card__image"
         :src="require(`~/static/images/thumbnails/${post.img}`)"
         :alt="post.alt"
       />
@@ -26,14 +27,30 @@ export default {
 
 <style lang="scss" scoped>
 .blog-card {
-  a {
+  padding: 1rem 0;
+  &__link {
+    color: #030303;
+    &:hover {
+      color: green;
+    }
+    &:active {
+      color: green;
+    }
     text-decoration: none;
   }
-  &__title {
-    color: #030303;
+  &__image {
+    max-width: 800px;
+    width: 100%;
   }
   &__description {
+    padding: 0.3rem 0;
     color: #767676;
+  }
+  @media (min-width: 813px) {
+    &__image {
+      max-width: 470px;
+      width: 100%;
+    }
   }
 }
 </style>

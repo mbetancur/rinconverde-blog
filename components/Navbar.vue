@@ -36,7 +36,7 @@ export default {
     align-items: center;
     flex-direction: column;
     border-radius: 50%;
-    background-color: red;
+    background-color: green;
     width: 50px;
     height: 50px;
     z-index: 12;
