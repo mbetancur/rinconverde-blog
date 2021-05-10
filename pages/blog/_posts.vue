@@ -28,7 +28,11 @@ export default {
 <style lang="scss" >
 .blogs {
   padding: 1rem;
+
   .blog-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
     padding-left: 0;
     list-style-type: none;
   }

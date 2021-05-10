@@ -39,18 +39,12 @@ export default {
     text-decoration: none;
   }
   &__image {
-    max-width: 800px;
+    max-width: 500px;
     width: 100%;
   }
   &__description {
     padding: 0.3rem 0;
     color: #767676;
-  }
-  @media (min-width: 813px) {
-    &__image {
-      max-width: 470px;
-      width: 100%;
-    }
   }
 }
 </style>
