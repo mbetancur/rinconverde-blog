@@ -1,12 +1,21 @@
 <template>
-  <nav id="nav" class="nav-menu" v-click-outside="openMenu">
-    <header class="nav-menu__header" @click="openMenu" role="button">
+  <nav id="nav" class="nav-menu">
+    <header
+      class="nav-menu__header"
+      @click="openMenu"
+      role="button"
+      v-click-outside="closeMenu"
+    >
       <div class="nav-menu__header-line"></div>
       <div class="nav-menu__header-line"></div>
     </header>
-    <div :class="[showMenu ? 'nav-menu__body' : 'nav-menu__body-close']">
+    <div
+      class="nav-menu__body"
+      :class="[showMenu ? 'nav-menu__body-open' : 'nav-menu__body-close']"
+    >
       <NuxtLink class="button--green" to="/"> Home </NuxtLink>
       <NuxtLink class="button--green" to="/blog"> Blog </NuxtLink>
+      <NuxtLink class="button--green" to="/blog"> About </NuxtLink>
     </div>
   </nav>
 </template>
@@ -24,21 +33,34 @@ export default {
     openMenu() {
       this.showMenu = !this.showMenu;
     },
+    closeMenu() {
+      if (this.showMenu) {
+        this.showMenu = false;
+      }
+    },
   },
+  // watch: {
+  //   $route() {
+  //     this.showMenu = false;
+  //   },
+  // },
 };
 </script>
 
 <style lang="scss" scoped>
+@mixin body-style {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 .nav-menu {
   width: 100%;
 
   &__header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    @include body-style();
     border-radius: 50%;
-    background-color: green;
+    background-color: rgb(16, 135, 117);
     width: 50px;
     height: 50px;
 
@@ -51,14 +73,24 @@ export default {
   }
 
   &__body {
+    @include body-style();
     position: fixed;
-    transition: all 1s;
-    z-index: 10000;
+    width: 100%;
+    height: 100%;
+
+    &-open {
+      z-index: 10000;
+      transition: all 0.8s;
+      background-color: rgb(39, 181, 159);
+    }
 
     &-close {
-      position: fixed;
-      transform: translateY(-100px);
-      transition: all 1s;
+      transform: translateY(-1000px);
+      transition: all 0.8s;
+    }
+
+    .button--green {
+      margin: 10px;
     }
   }
 }
