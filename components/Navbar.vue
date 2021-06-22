@@ -1,11 +1,6 @@
 <template>
   <nav id="nav" class="nav-menu">
-    <header
-      class="nav-menu__header"
-      @click="openMenu"
-      role="button"
-      v-click-outside="closeMenu"
-    >
+    <header class="nav-menu__header" @click="openMenu" role="button">
       <div class="nav-menu__header-line"></div>
       <div class="nav-menu__header-line"></div>
     </header>
@@ -39,18 +34,12 @@ export default {
       }
     },
   },
-  mounted() {
-    if (window.matchMedia("(min-width: 768px)").matches) {
-      //TODO: SPIKE 4 improve query
-      this.showMenu = true;
-    }
+  // TODO: look 4 better solution to close menu on routing navigation
+  watch: {
+    $route() {
+      this.showMenu = false;
+    },
   },
-  //TODO: look 4 better solution to close menu on routing navigation
-  // watch: {
-  //   $route() {
-  //     this.showMenu = false;
-  //   },
-  // },
 };
 </script>
 
@@ -104,20 +93,6 @@ export default {
   @media (min-width: 768px) {
     &__header {
       display: none;
-    }
-
-    &__body {
-      position: relative;
-      display: flex;
-      flex-direction: row;
-      height: 12%;
-
-      &-open {
-        background-color: rgb(39, 181, 159);
-      }
-      &-close {
-        display: none;
-      }
     }
   }
 }

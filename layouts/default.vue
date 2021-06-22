@@ -1,14 +1,27 @@
 <template>
   <div>
-    <Navbar />
+    <component :is="navbarComponent" />
     <Nuxt />
   </div>
 </template>
 
 <script>
-import Navbar from "@/components/Navbar";
 export default {
-  components: { Navbar },
+  components: {
+    mobile: () => import("@/components/Navbar"),
+    browser: () => import("@/components/BigNavbar"),
+  },
+  // TODO: Improve this device approach
+  beforeMount() {
+    if (window.matchMedia("(min-width: 768px)").matches) {
+      this.navbarComponent = "browser";
+    }
+  },
+  data() {
+    return {
+      navbarComponent: "mobile",
+    };
+  },
 };
 </script>
 
