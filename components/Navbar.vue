@@ -39,6 +39,13 @@ export default {
       }
     },
   },
+  mounted() {
+    if (window.matchMedia("(min-width: 768px)").matches) {
+      //TODO: SPIKE 4 improve query
+      this.showMenu = true;
+    }
+  },
+  //TODO: look 4 better solution to close menu on routing navigation
   // watch: {
   //   $route() {
   //     this.showMenu = false;
@@ -91,6 +98,26 @@ export default {
 
     .button--green {
       margin: 10px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    &__header {
+      display: none;
+    }
+
+    &__body {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      height: 12%;
+
+      &-open {
+        background-color: rgb(39, 181, 159);
+      }
+      &-close {
+        display: none;
+      }
     }
   }
 }
