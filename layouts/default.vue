@@ -1,20 +1,40 @@
 <template>
   <div>
-    <Nuxt />
+    <component :is="navbarComponent" />
+    <Nuxt class="blog-content"/>
+    <Footer />
   </div>
 </template>
 
+<script>
+import Footer from "@/components/Footer";
+export default {
+  components: {
+    mobile: () => import("@/components/Navbar"),
+    browser: () => import("@/components/BigNavbar"),
+    Footer
+  },
+  // TODO: Improve this device approach
+  beforeMount() {
+    if (window.matchMedia("(min-width: 768px)").matches) {
+      this.navbarComponent = "browser";
+    }
+  },
+  data() {
+    return {
+      navbarComponent: "mobile",
+    };
+  },
+};
+</script>
+
 <style>
+.blog-content {
+  min-height: 100vh;
+}
 html {
-  font-family:
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
+  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
