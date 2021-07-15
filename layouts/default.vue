@@ -1,15 +1,18 @@
 <template>
   <div>
     <component :is="navbarComponent" />
-    <Nuxt />
+    <Nuxt class="blog-content"/>
+    <Footer />
   </div>
 </template>
 
 <script>
+import Footer from "@/components/Footer";
 export default {
   components: {
     mobile: () => import("@/components/Navbar"),
     browser: () => import("@/components/BigNavbar"),
+    Footer
   },
   // TODO: Improve this device approach
   beforeMount() {
@@ -26,6 +29,9 @@ export default {
 </script>
 
 <style>
+.blog-content {
+  min-height: 100vh;
+}
 html {
   font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, "Helvetica Neue", Arial, sans-serif;
