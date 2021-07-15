@@ -27,7 +27,7 @@ export default {
 
 <style lang="scss" scoped>
 .blog-card {
-  padding: 1rem 0;
+  padding: 1rem;
   &__link {
     color: #030303;
     &:hover {
