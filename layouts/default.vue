@@ -1,29 +1,18 @@
 <template>
   <div>
-    <component :is="navbarComponent" />
-    <Nuxt class="blog-content"/>
+    <Navbar />
+    <Nuxt class="blog-content" />
     <Footer />
   </div>
 </template>
 
 <script>
+import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 export default {
   components: {
-    mobile: () => import("@/components/Navbar"),
-    browser: () => import("@/components/BigNavbar"),
-    Footer
-  },
-  // TODO: Improve this device approach
-  beforeMount() {
-    if (window.matchMedia("(min-width: 768px)").matches) {
-      this.navbarComponent = "browser";
-    }
-  },
-  data() {
-    return {
-      navbarComponent: "mobile",
-    };
+    Navbar,
+    Footer,
   },
 };
 </script>
