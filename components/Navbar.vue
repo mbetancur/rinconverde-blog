@@ -1,15 +1,13 @@
 <template>
   <div>
-    <input id="main-menu-checkbox" type="checkbox" />
-
+    <input id="main-menu-checkbox" type="checkbox" v-model="checked" />
     <header>
       <label for="main-menu-checkbox" class="menu-toggle">
-        <span class="sr-only">Open main menu</span>
         <!-- TODO burger icon here -->
+        <span class="burger-line">--</span>
+        <span class="burger-line">--</span>
       </label>
-
-      <h1 class="logo">hamburgers</h1>
-
+      <h1 class="logo">El Rincón Verde</h1>
       <nav
         id="main-menu"
         role="navigation"
@@ -18,12 +16,13 @@
         aria-label="Main menu"
       >
         <label for="main-menu-checkbox" class="menu-close">
-          <span class="sr-only">Close main menu</span>
-          <span class="fa fa-close" aria-hidden="true"></span>
+          <!-- TODO burger icon here -->
+          <span class="burger-line">--</span>
+          <span class="burger-line">--</span>
         </label>
         <ul>
-          <li><NuxtLink to="/blog">Blog</NuxtLink></li>
-          <li><a href="#">About</a></li>
+          <li><NuxtLink to="/"> Home </NuxtLink></li>
+          <li><NuxtLink to="/posts">Blog</NuxtLink></li>
         </ul>
       </nav>
       <label
@@ -38,46 +37,22 @@
 </template>
 
 <script>
-import "@/directives";
-
 export default {
   data() {
     return {
-      showMenu: false,
+      checked: false,
     };
-  },
-  methods: {
-    openMenu() {
-      this.showMenu = !this.showMenu;
-    },
-    closeMenu() {
-      if (this.showMenu) {
-        this.showMenu = false;
-      }
-    },
   },
   // TODO: look 4 better solution to close menu on routing navigation
   watch: {
     $route() {
-      this.showMenu = false;
+      this.checked = false;
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-/* Screen reader only */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
-}
-
 /* Button styling */
 .menu-toggle {
   display: inline-block;
@@ -90,7 +65,7 @@ export default {
 
 .menu-toggle:hover,
 #main-menu-checkbox:focus ~ header .menu-toggle {
-  color: #c00;
+  color: green;
   outline: auto;
 }
 
@@ -104,11 +79,11 @@ export default {
  Offscreen menu style
 */
 .main-menu {
-  position: absolute;
+  position: fixed;
   left: -200px;
   top: 0;
-  height: 100%;
-  overflow-y: scroll;
+  height: 100vh;
+  overflow-y: hidden;
   overflow-x: visible;
   transition: left 0.3s ease, box-shadow 0.3s ease;
   z-index: 999;
@@ -184,10 +159,6 @@ export default {
   z-index: 1000;
 }
 
-/* 
- We could us `.main-menu:target:after`, but
- it wouldn't be clickable.
-*/
 #main-menu-checkbox:checked ~ header .backdrop,
 .main-menu[aria-expanded="true"] + .backdrop {
   position: absolute;
@@ -201,14 +172,6 @@ export default {
   background: #000;
   background: rgba(0, 0, 0, 0.85);
   cursor: default;
-}
-
-@supports (position: fixed) {
-  .main-menu,
-  #main-menu-checkbox:checked ~ header .backdrop,
-  .main-menu[aria-expanded="true"] + .backdrop {
-    position: fixed;
-  }
 }
 
 /*
@@ -245,42 +208,21 @@ export default {
   }
 
   .main-menu a {
-    color: #06c;
+    color: rgb(0, 204, 201);
     border: 0 !important; /* Remove borders from off-canvas styling */
   }
 
   .main-menu a:hover,
   .main-menu a:focus {
     background: none; /* Remove background from off-canvas styling */
-    color: #c00;
+    color: rgb(10, 204, 0);
   }
-}
-
-/*
- Demo purposes only
-*/
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
 }
 
 header {
   padding: 20px;
   display: flex;
   align-items: baseline;
-}
-
-article {
-  padding: 30px;
-  width: 55em;
-  font-size: 16px;
-  line-height: 1.5em;
-}
-
-article h2 {
-  font-weight: 500;
-  font-size: 28px;
 }
 
 .logo {
