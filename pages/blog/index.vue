@@ -2,7 +2,12 @@
   <div class="blogs">
     <h1>Blog Posts</h1>
     <ul class="blog-cards">
-      <blog-card v-for="post of posts" :key="post.slug" :post="post" />
+      <blog-card
+        class="blog-card"
+        :key="post.slug"
+        v-for="post of posts"
+        :post="post"
+      />
     </ul>
   </div>
 </template>
@@ -15,7 +20,7 @@ export default {
   },
   async asyncData({ $content }) {
     const posts = await $content("post")
-      .only(["title", "description", "img"])
+      .only(["title", "description", "img", "slug"])
       .sortBy("createdAt", "asc")
       .fetch();
     return {

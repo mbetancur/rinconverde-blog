@@ -22,7 +22,7 @@
         </label>
         <ul>
           <li><NuxtLink to="/"> Home </NuxtLink></li>
-          <li><NuxtLink to="/posts">Blog</NuxtLink></li>
+          <li><NuxtLink to="/blog">Blog</NuxtLink></li>
         </ul>
       </nav>
       <label

@@ -13,7 +13,7 @@ export default {
     CustomImage,
   },
   async asyncData({ $content, params }) {
-    const post = await $content("post", params.post).fetch();
+    const post = await $content("post", params.slug).fetch();
     return { post };
   },
 };

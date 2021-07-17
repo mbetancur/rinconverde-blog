@@ -1,6 +1,9 @@
 <template>
   <li class="blog-card">
-    <NuxtLink :to="post.path" class="blog-card__link">
+    <NuxtLink
+      :to="{ name: 'blog-slug', params: { slug: post.slug } }"
+      class="blog-card__link"
+    >
       <img
         class="blog-card__image"
         :src="require(`~/static/images/thumbnails/${post.img}`)"
