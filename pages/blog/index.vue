@@ -32,7 +32,7 @@ export default {
 
 <style lang="scss" >
 .blogs {
-  padding: 1rem;
+  padding: 0.6rem;
 
   .blog-cards {
     display: flex;

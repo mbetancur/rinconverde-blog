@@ -1,5 +1,8 @@
 <template>
-  <p class="footer">This is the footer. With some message</p>
+  <p class="footer">
+    © 2021 — Dev-author: 
+    <a href="https://twitter.com/MBetancur22">Mateo</a>
+  </p>
 </template>
 
 <script>
@@ -7,17 +10,11 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
-@mixin body-style {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
 .footer {
-    @include body-style();
+  @include body-style();
   bottom: 0;
-  background-color: rgb(16, 135, 117);
+  background-color: $second-color;
   padding: 50px 0;
+  color: $third-color;
 }
 </style>

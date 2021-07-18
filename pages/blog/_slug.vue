@@ -1,8 +1,8 @@
 <template>
   <article class="post">
+    <h1 class="post_title">{{ post.title }}</h1>
     <custom-image class="post_image" :image="post.img" :alt="post.alt" />
-    <h1>{{ post.title }}</h1>
-    <nuxt-content :document="post" />
+    <nuxt-content class="post_content" :document="post" />
   </article>
 </template>
 
@@ -24,9 +24,14 @@ export default {
   display: flex;
   flex-flow: column;
   align-items: center;
-
+  &_title {
+    margin: 1rem 0;
+  }
   &_image {
-    // max-width: 100%;
+    width: 100%;
+  }
+  &_content {
+    margin: 1.2em;
   }
 }
 </style>
