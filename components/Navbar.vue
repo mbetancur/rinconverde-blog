@@ -1,11 +1,12 @@
 <template>
-  <div>
+  <div class="navbar">
     <input id="main-menu-checkbox" type="checkbox" v-model="checked" />
     <header>
       <label for="main-menu-checkbox" class="menu-toggle">
-        <!-- TODO burger icon here -->
-        <span class="burger-line">--</span>
-        <span class="burger-line">--</span>
+        <div class="burger-icon">
+          <span></span>
+          <span></span>
+        </div>
       </label>
       <h1 class="logo">El Rincón Verde</h1>
       <nav
@@ -16,9 +17,7 @@
         aria-label="Main menu"
       >
         <label for="main-menu-checkbox" class="menu-close">
-          <!-- TODO burger icon here -->
-          <span class="burger-line">--</span>
-          <span class="burger-line">--</span>
+          <div class="close-icon"></div>
         </label>
         <ul>
           <li><NuxtLink to="/"> Home </NuxtLink></li>
@@ -53,20 +52,41 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-/* Button styling */
-.menu-toggle {
-  display: inline-block;
-  padding: 0.75em 15px;
-  line-height: 1em;
-  font-size: 1em;
-  color: #333;
-  cursor: pointer;
+.close-icon:after {
+  content: "";
+  height: 28px;
+  border-left: 6px solid $third-color;
+  border-radius: 10px;
+  position: absolute;
+  transform: rotate(45deg);
 }
 
-.menu-toggle:hover,
-#main-menu-checkbox:focus ~ header .menu-toggle {
-  color: green;
-  outline: auto;
+.close-icon:before {
+  content: "";
+  height: 28px;
+  border-left: 6px solid $third-color;
+  border-radius: 10px;
+  position: absolute;
+  transform: rotate(-45deg);
+}
+
+.burger-icon {
+  display: flex;
+  flex-direction: column;
+  width: 2.5rem;
+  span {
+    background-color: $second-color;
+    border-radius: 10px;
+    height: 0.5rem;
+    margin: 4px 0;
+  }
+}
+
+/* Button styling */
+.menu-toggle {
+  padding: 0 15px;
+  color: $second-color;
+  cursor: pointer;
 }
 
 #main-menu-checkbox {
@@ -89,39 +109,42 @@ export default {
   z-index: 999;
 }
 
+.main-menu .menu-close:first-child {
+  border-bottom: none;
+}
+
 .main-menu ul {
   list-style: none;
   margin: 0;
   padding: 2.5em 0 0;
-  /* Hide shadow w/ -8px while 'closed' */
   -webkit-box-shadow: -8px 0 8px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: -8px 0 8px rgba(0, 0, 0, 0.5);
   box-shadow: -8px 0 8px rgba(0, 0, 0, 0.5);
   min-height: 100%;
   width: 200px;
-  background: #1a1a1a;
+  background: $second-color;
 }
 
 .main-menu a,
 .main-menu .menu-close {
   display: block;
-  padding: 0.75em 15px;
+  padding: 0.75em 35px;
   line-height: 1em;
   font-size: 1em;
-  color: #fff;
+  color: $third-color;
   text-decoration: none;
-  border-bottom: 1px solid #383838;
+  border-bottom: 1px solid $main-color;
 }
 
 .main-menu li:first-child a {
-  border-top: 1px solid #383838;
+  border-top: 1px solid $main-color;
 }
 
 .main-menu a:hover,
 .main-menu a:focus,
 .main-menu .menu-close:hover,
 #main-menu-checkbox:focus ~ header .menu-close {
-  background: #333;
+  background: $main-color;
   text-decoration: underline;
 }
 
@@ -145,7 +168,7 @@ export default {
   outline: none;
   -moz-box-shadow: 3px 0 12px rgba(0, 0, 0, 0.25);
   -webkit-box-shadow: 3px 0 12px rgba(0, 0, 0, 0.25);
-  box-shadow: 3px 0 12px rgba(0, 0, 0, 0.25);
+  box-shadow: $main-color;
 }
 
 #main-menu-checkbox:checked ~ header .menu-close,
@@ -161,7 +184,7 @@ export default {
 
 #main-menu-checkbox:checked ~ header .backdrop,
 .main-menu[aria-expanded="true"] + .backdrop {
-  position: absolute;
+  position: fixed;
   display: block;
   content: "";
   left: 0;
@@ -169,7 +192,7 @@ export default {
   width: 100%;
   height: 100%;
   z-index: 998;
-  background: #000;
+  background: $main-color;
   background: rgba(0, 0, 0, 0.85);
   cursor: default;
 }
@@ -208,14 +231,14 @@ export default {
   }
 
   .main-menu a {
-    color: rgb(0, 204, 201);
+    color: $main-color;
     border: 0 !important; /* Remove borders from off-canvas styling */
   }
 
   .main-menu a:hover,
   .main-menu a:focus {
     background: none; /* Remove background from off-canvas styling */
-    color: rgb(10, 204, 0);
+    color: $main-color;
   }
 }
 
