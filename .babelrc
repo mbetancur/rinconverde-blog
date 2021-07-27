@@ -9,6 +9,12 @@
               "node": "current"
             }
           }
+        ],
+        [
+          "@babel/plugin-proposal-private-methods",
+          {
+            "loose": true
+          }
         ]
       ]
     }

@@ -185,7 +185,7 @@ export default {
 #main-menu-checkbox:checked ~ header .backdrop,
 .main-menu[aria-expanded="true"] + .backdrop {
   position: fixed;
-  display: block;
+  display: flex;
   content: "";
   left: 0;
   top: 0;
@@ -245,7 +245,7 @@ export default {
 header {
   padding: 20px;
   display: flex;
-  align-items: baseline;
+  align-items: initial;
 }
 
 .logo {
