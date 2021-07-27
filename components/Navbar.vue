@@ -54,7 +54,7 @@ export default {
 <style lang="scss" scoped>
 .close-icon:after {
   content: "";
-  height: 28px;
+  height: 32px;
   border-left: 6px solid $third-color;
   border-radius: 10px;
   position: absolute;
@@ -63,7 +63,7 @@ export default {
 
 .close-icon:before {
   content: "";
-  height: 28px;
+  height: 32px;
   border-left: 6px solid $third-color;
   border-radius: 10px;
   position: absolute;
@@ -80,6 +80,11 @@ export default {
     height: 0.5rem;
     margin: 4px 0;
   }
+}
+
+header {
+  padding: 20px;
+  display: flex;
 }
 
 /* Button styling */
@@ -116,7 +121,7 @@ export default {
 .main-menu ul {
   list-style: none;
   margin: 0;
-  padding: 2.5em 0 0;
+  padding: 3em 0 0;
   -webkit-box-shadow: -8px 0 8px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: -8px 0 8px rgba(0, 0, 0, 0.5);
   box-shadow: -8px 0 8px rgba(0, 0, 0, 0.5);
@@ -138,14 +143,6 @@ export default {
 
 .main-menu li:first-child a {
   border-top: 1px solid $main-color;
-}
-
-.main-menu a:hover,
-.main-menu a:focus,
-.main-menu .menu-close:hover,
-#main-menu-checkbox:focus ~ header .menu-close {
-  background: $main-color;
-  text-decoration: underline;
 }
 
 .main-menu .menu-close {
@@ -185,7 +182,7 @@ export default {
 #main-menu-checkbox:checked ~ header .backdrop,
 .main-menu[aria-expanded="true"] + .backdrop {
   position: fixed;
-  display: block;
+  display: flex;
   content: "";
   left: 0;
   top: 0;
@@ -202,6 +199,12 @@ export default {
  Horizontal menu
 */
 @media (min-width: 768px) {
+  header {
+    padding: 20px;
+    display: flex;
+    align-items: baseline;
+  }
+
   .menu-toggle,
   .main-menu .menu-close,
   #main-menu-checkbox {
@@ -219,8 +222,6 @@ export default {
 
   .main-menu ul {
     display: flex;
-
-    /* Undo off-canvas styling */
     padding: 0;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
@@ -240,12 +241,6 @@ export default {
     background: none; /* Remove background from off-canvas styling */
     color: $main-color;
   }
-}
-
-header {
-  padding: 20px;
-  display: flex;
-  align-items: baseline;
 }
 
 .logo {
