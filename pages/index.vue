@@ -7,9 +7,49 @@
         <NuxtLink class="button--green" to="/blog"> Blog </NuxtLink>
       </div>
     </div>
+    <carousel
+      :scrollPerPage="true"
+      :perPageCustom="[
+        [480, 2],
+        [768, 4],
+      ]"
+    >
+      <slide>
+        <img
+          src="https://picsum.photos/300/100/"
+          style="width: 300px; max-width: 100%"
+        />Slide 2 Content
+      </slide>
+      <slide>
+        <img
+          src="https://picsum.photos/300/100/"
+          style="width: 300px; max-width: 100%"
+        />Slide 1 Content
+      </slide>
+      <slide>
+        <img
+          src="https://picsum.photos/300/100/"
+          style="width: 300px; max-width: 100%"
+        />Slide 3 Content
+      </slide>
+      <slide>
+        <img
+          src="https://picsum.photos/300/100/"
+          style="width: 300px; max-width: 100%"
+        />Slide 4 Content
+      </slide>
+    </carousel>
   </div>
 </template>
-
+<script>
+import { Carousel, Slide } from "vue-carousel";
+export default {
+  components: {
+    Carousel,
+    Slide,
+  },
+};
+</script>
 <style>
 .container {
   margin: 0 auto;
@@ -18,6 +58,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  flex-direction: column;
 }
 
 .title {
