@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <video
-      :src="require('@/static/videos/hero.mp4')"
+      :src="require('@/static/videos/hero-bg.mp4')"
       autoplay
       loop
       playsinline
