@@ -1,11 +1,15 @@
 <template>
   <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">El Rincon Verde</h1>
-      <div class="links">
-        <NuxtLink class="button--green" to="/blog"> Blog </NuxtLink>
-      </div>
+    <video
+      :src="require('@/static/videos/hero-bg.mp4')"
+      autoplay
+      loop
+      playsinline
+      muted
+    ></video>
+    <Logo />
+    <div class="links">
+      <NuxtLink class="button--green" to="/blog"> Blog </NuxtLink>
     </div>
     <carousel
       :scrollPerPage="true"
@@ -50,33 +54,23 @@ export default {
   },
 };
 </script>
-<style>
+
+<style lang="scss">
 .container {
-  margin: 0 auto;
-  min-height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
   flex-direction: column;
-}
+  align-items: center;
+  justify-content: center;
 
-.title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
+  video {
+    z-index: -1;
+    object-fit: cover;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
 }
 
 .links {
