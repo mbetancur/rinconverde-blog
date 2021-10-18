@@ -1,11 +1,13 @@
 <template>
   <div class="container">
     <video
-      :src="require('@/static/videos/hero-bg.mp4')"
+      :src="require('@/static/videos/video.mp4')"
       autoplay
       loop
       playsinline
       muted
+      preload="auto"
+      :poster="require('@/static/images/poster.jpg')"
     ></video>
     <Logo />
     <div class="links">
