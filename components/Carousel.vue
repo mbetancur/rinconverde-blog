@@ -3,10 +3,11 @@
     class="carousel"
     autoplay
     autoplayHoverPause
+    :autoplayTimeout="5000"
     scrollPerPage
     loop
     mouseDrag
-    :speed="2000"
+    :speed="4000"
     :perPageCustom="[
       [100, 1],
       [768, 3],
@@ -65,6 +66,7 @@ export default {
 .carousel {
   background-color: ivory;
   &__image {
+    padding: 12px;
     max-width: 100%;
   }
 }
