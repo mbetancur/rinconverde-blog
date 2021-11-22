@@ -13,41 +13,13 @@
       [768, 3],
     ]"
   >
-    <slide class="carousel__slide">
-      <img
-        class="carousel__image"
-        :src="require('@/static/images/thumbnails/el-salado.jpg')"
-      />
-    </slide>
-    <slide>
-      <img
-        class="carousel__image"
-        :src="require('@/static/images/thumbnails/el-salado.jpg')"
-      />
-    </slide>
-    <slide>
-      <img
-        class="carousel__image"
-        :src="require('@/static/images/thumbnails/el-salado.jpg')"
-      />
-    </slide>
-    <slide>
-      <img
-        class="carousel__image"
-        :src="require('@/static/images/thumbnails/el-salado.jpg')"
-      />
-    </slide>
-    <slide>
-      <img
-        class="carousel__image"
-        :src="require('@/static/images/thumbnails/el-salado.jpg')"
-      />
-    </slide>
-    <slide>
-      <img
-        class="carousel__image"
-        :src="require('@/static/images/thumbnails/el-salado.jpg')"
-      />
+    <slide
+      :key="project.title"
+      class="carousel__slide"
+      v-for="project of projects"
+    >
+      <img class="carousel__image" :src="project.mainImage" />
+      <i> {{ project.title }}</i>
     </slide>
   </carousel>
 </template>
@@ -58,6 +30,12 @@ export default {
   components: {
     Carousel,
     Slide,
+  },
+  props: {
+    projects: {
+      type: Array,
+      required: true,
+    },
   },
 };
 </script>

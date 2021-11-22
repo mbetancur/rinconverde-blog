@@ -15,7 +15,7 @@
         <NuxtLink class="button--green" to="/blog"> Blog </NuxtLink>
       </div>
     </div>
-    <Carousel class="container__carousel" />
+    <Carousel class="container__carousel" :projects="projects" />
   </div>
 </template>
 
@@ -24,6 +24,12 @@ import Carousel from "@/components/Carousel.vue";
 export default {
   components: {
     Carousel,
+  },
+  async asyncData({ $content, params }) {
+    const projects = await $content("project", params.slug)
+      .only(["title", "mainImage"])
+      .fetch();
+    return { projects };
   },
 };
 </script>
