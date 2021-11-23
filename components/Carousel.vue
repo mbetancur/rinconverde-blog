@@ -18,8 +18,13 @@
       class="carousel__slide"
       v-for="project of projects"
     >
-      <img class="carousel__image" :src="project.mainImage" />
-      <i> {{ project.title }}</i>
+      <NuxtLink
+        :to="{ name: 'project-slug', params: { slug: project.slug } }"
+        class="project__link"
+      >
+        <img class="carousel__image" :src="project.mainImage" />
+        <i> {{ project.path }}</i>
+      </NuxtLink>
     </slide>
   </carousel>
 </template>

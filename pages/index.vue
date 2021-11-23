@@ -27,7 +27,7 @@ export default {
   },
   async asyncData({ $content, params }) {
     const projects = await $content("project", params.slug)
-      .only(["title", "mainImage"])
+      .only(["title", "mainImage", "slug"])
       .fetch();
     return { projects };
   },

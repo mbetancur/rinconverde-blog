@@ -1,12 +1,17 @@
 <template>
-  <img :src="project[0].images[0]" alt="" />
+  <div>
+    {{ project.title }}
+    <Carousel class="container__carousel" :projects="project[0]" />
+  </div>
 </template>
 
 <script>
 export default {
   async asyncData({ $content, params }) {
-    const project = await $content("project", params.slug).fetch();
-    console.log(project[0].images[0]);
+    const project = await $content("project", params.slug)
+      .only(["title", "images"])
+      .where({ title: "Cisneros" })
+      .fetch();
     return { project };
   },
 };
