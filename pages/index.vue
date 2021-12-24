@@ -15,15 +15,32 @@
         <NuxtLink class="button--green" to="/blog"> Blog </NuxtLink>
       </div>
     </div>
-    <Carousel class="container__carousel" :projects="projects" />
+    <Carousel class="container__carousel">
+      <slide
+        :key="project.title"
+        class="carousel__slide"
+        v-for="project of projects"
+      >
+        <NuxtLink
+          :to="{ name: 'project-slug', params: { slug: project.slug } }"
+          class="project__link"
+        >
+          <img class="carousel__image" :src="project.mainImage" />
+          <i> {{ project.title }}</i>
+        </NuxtLink>
+      </slide>
+    </Carousel>
   </div>
 </template>
 
 <script>
 import Carousel from "@/components/Carousel.vue";
+import { Slide } from "vue-carousel";
+
 export default {
   components: {
     Carousel,
+    Slide,
   },
   async asyncData({ $content, params }) {
     const projects = await $content("project", params.slug)

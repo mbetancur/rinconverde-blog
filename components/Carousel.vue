@@ -13,34 +13,15 @@
       [768, 3],
     ]"
   >
-    <slide
-      :key="project.title"
-      class="carousel__slide"
-      v-for="project of projects"
-    >
-      <NuxtLink
-        :to="{ name: 'project-slug', params: { slug: project.slug } }"
-        class="project__link"
-      >
-        <img class="carousel__image" :src="project.mainImage" />
-        <i> {{ project.path }}</i>
-      </NuxtLink>
-    </slide>
+    <slot></slot>
   </carousel>
 </template>
-
 <script>
-import { Carousel, Slide } from "vue-carousel";
+//TODO recieve props for diffrent carousel implementations
+import { Carousel } from "vue-carousel";
 export default {
   components: {
     Carousel,
-    Slide,
-  },
-  props: {
-    projects: {
-      type: Array,
-      required: true,
-    },
   },
 };
 </script>
