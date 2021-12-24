@@ -1,5 +1,5 @@
 ---
 title: Cisneros
 mainImage: cisneros.jpg
-images: [ cisneros.jpg, 2.jpg ]
+images: [ { name: 'Cisneros', picture: 'cisneros.jpg' },{ name: 'Cisneros City', picture: 'cisneros-city.jpg' } ]
 ---
