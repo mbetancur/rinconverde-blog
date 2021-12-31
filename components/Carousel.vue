@@ -30,7 +30,7 @@ export default {
 .carousel {
   background-color: ivory;
   &__image {
-    padding: 12px;
+    padding: 6px;
     max-width: 100%;
   }
 }
