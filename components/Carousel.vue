@@ -7,7 +7,7 @@
     scrollPerPage
     loop
     mouseDrag
-    :speed="4000"
+    :speed="transitionSpeed"
     :perPageCustom="[
       [100, 1],
       [768, 3],
@@ -23,14 +23,22 @@ export default {
   components: {
     Carousel,
   },
+  props: {
+    transitionSpeed: {
+      type: Number,
+      default: 3000,
+    },
+  },
 };
 </script>
 
 <style lang="scss">
 .carousel {
   background-color: ivory;
-  &__image {
+  &__slide {
     padding: 6px;
+  }
+  &__image {
     max-width: 100%;
   }
 }

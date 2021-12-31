@@ -75,7 +75,7 @@ export default {
   }
 
   .container__carousel {
-    padding-top: 45px;
+    padding: 45px 0;
   }
 }
 </style>
