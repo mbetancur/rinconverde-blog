@@ -3,60 +3,25 @@
     class="carousel"
     autoplay
     autoplayHoverPause
+    :autoplayTimeout="5000"
     scrollPerPage
     loop
     mouseDrag
-    :speed="2000"
+    :speed="4000"
     :perPageCustom="[
       [100, 1],
       [768, 3],
     ]"
   >
-    <slide class="carousel__slide">
-      <img
-        class="carousel__image"
-        :src="require('@/static/images/thumbnails/el-salado.jpg')"
-      />
-    </slide>
-    <slide>
-      <img
-        class="carousel__image"
-        :src="require('@/static/images/thumbnails/el-salado.jpg')"
-      />
-    </slide>
-    <slide>
-      <img
-        class="carousel__image"
-        :src="require('@/static/images/thumbnails/el-salado.jpg')"
-      />
-    </slide>
-    <slide>
-      <img
-        class="carousel__image"
-        :src="require('@/static/images/thumbnails/el-salado.jpg')"
-      />
-    </slide>
-    <slide>
-      <img
-        class="carousel__image"
-        :src="require('@/static/images/thumbnails/el-salado.jpg')"
-      />
-    </slide>
-    <slide>
-      <img
-        class="carousel__image"
-        :src="require('@/static/images/thumbnails/el-salado.jpg')"
-      />
-    </slide>
+    <slot></slot>
   </carousel>
 </template>
-
 <script>
-import { Carousel, Slide } from "vue-carousel";
+//TODO recieve props for diffrent carousel implementations
+import { Carousel } from "vue-carousel";
 export default {
   components: {
     Carousel,
-    Slide,
   },
 };
 </script>
@@ -65,6 +30,7 @@ export default {
 .carousel {
   background-color: ivory;
   &__image {
+    padding: 6px;
     max-width: 100%;
   }
 }
